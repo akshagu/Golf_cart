@@ -1,0 +1,5 @@
+# dev numbers. these are labeled on devices
+dev_num:
+  left_wheel: 38
+  right_wheel: 71
+

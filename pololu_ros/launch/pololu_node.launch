@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Set the device port -->
+    <arg name="timeout" default="1.0" />
+    <arg name="wheel_state" default="1000" />
+    <arg name="max_accel" default="5" />
+	<arg name="respawn" default="false" />
+    <!-- Start node to control motors -->
+    <node pkg="pololu_ros" type="pololu_node.py" name="pololu_node" respawn="$(arg respawn)" output="screen">
+		<!-- How soon to timeout (watchdog) between commands -->
+        <param name="timeout" type="double" value="$(arg timeout)"/>
+		<!-- What potiometer value counts as being extended -->
+        <param name="wheel_state" type="int" value="$(arg wheel_state)"/>
+		<!-- Max acceleration limit -->
+        <param name="max_accel" type="int" value="$(arg max_accel)"/>
+        <!-- Device number configuration for daisy chaining  -->
+		<rosparam command="load" file="$(find pololu_ros)/launch/config.yaml" />
+    </node>
+</launch>
