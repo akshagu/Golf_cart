@@ -173,8 +173,8 @@ class image_converter:
        msg[i].confidence = conf[i]
        msg[i].x_min = np.float32(p1[1]).item()
        msg[i].x_max = np.float32(p2[1]).item()
-       msg[i].y_max = np.float32(args.image_height-p1[0]).item()
-       msg[i].y_min = np.float32(args.image_height-p2[0]).item()
+       msg[i].y_max = np.float32(p2[0]).item()
+       msg[i].y_min = np.float32(p1[0]).item()
 
        msg_array.objects.append(msg[i])
 
